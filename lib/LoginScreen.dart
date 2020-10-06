@@ -4,19 +4,14 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+        body: CustomPaint(
+      painter: CurvePainter(),
+      child: Container(
         margin: EdgeInsets.fromLTRB(25, 5, 25, 0),
         child: Column(
           children: [
-            Container(
-              height: 100,
-              color: Colors.white,
-              child: CustomPaint(
-                painter: CurvePainter(),
-              ),
-            ),
             SizedBox(
-              height: 150,
+              height: 140,
             ),
             Align(
               child: Text(
@@ -27,7 +22,7 @@ class LoginScreen extends StatelessWidget {
               alignment: Alignment.topLeft,
             ),
             SizedBox(
-              height: 50,
+              height: 60,
             ),
             TextField(
               decoration: InputDecoration(labelText: 'Email'),
@@ -45,7 +40,7 @@ class LoginScreen extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ));
   }
 }
 
@@ -58,13 +53,13 @@ class CurvePainter extends CustomPainter {
 
     var path = Path();
 
-    path.moveTo(0, size.height * 0.9167);
-    path.quadraticBezierTo(size.width * 0.25, size.height * 0.875,
-        size.width * 0.5, size.height * 0.9167);
-    path.quadraticBezierTo(size.width * 0.75, size.height * 0.9584,
-        size.width * 1.0, size.height * 0.9167);
-    path.lineTo(size.width, size.height);
-    path.lineTo(0, size.height);
+    path.moveTo(0, size.height * 0.32);
+    path.quadraticBezierTo(size.width * 0.25, size.height * 0.40,
+        size.width * 0.5, size.height * 0.35);
+    path.quadraticBezierTo(size.width * 0.75, size.height * 0.30,
+        size.width * 1.0, size.height * 0.28);
+    path.lineTo(size.width, 0);
+    path.lineTo(0, 0);
 
     canvas.drawPath(path, paint);
   }
