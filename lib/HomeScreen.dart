@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './ProductOverviewScreen.dart';
 
 List product = [
   {
@@ -53,45 +54,55 @@ class _HomeScreenState extends State<HomeScreen> {
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2, crossAxisSpacing: 4.0, mainAxisSpacing: 8.0),
         itemBuilder: (context, index) {
-          return Container(
-              height: 200,
-              child: Card(
-                  child: Stack(
-                children: [
-                  Image.network(product[index]['Link']),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      height: 45,
-                      width: MediaQuery.of(context).size.width,
-                      child: Card(
-                        color: Colors.transparent,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            IconButton(
-                                icon: Icon(
-                                  Icons.favorite,
-                                  color: Colors.redAccent,
-                                ),
-                                onPressed: null),
-                            Text(
-                              product[index]['Title'],
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            IconButton(
-                                icon: Icon(
-                                  Icons.shopping_cart,
-                                  color: Colors.redAccent,
-                                ),
-                                onPressed: null)
-                          ],
+          return GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (BuildContext context) => ProductOverviewScreen(
+                            item: product[index],
+                          )));
+            },
+            child: Container(
+                height: 200,
+                child: Card(
+                    child: Stack(
+                  children: [
+                    Image.network(product[index]['Link']),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        height: 45,
+                        width: MediaQuery.of(context).size.width,
+                        child: Card(
+                          color: Colors.transparent,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              IconButton(
+                                  icon: Icon(
+                                    Icons.favorite,
+                                    color: Colors.redAccent,
+                                  ),
+                                  onPressed: null),
+                              Text(
+                                product[index]['Title'],
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              IconButton(
+                                  icon: Icon(
+                                    Icons.shopping_cart,
+                                    color: Colors.redAccent,
+                                  ),
+                                  onPressed: null)
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  )
-                ],
-              )));
+                    )
+                  ],
+                ))),
+          );
         },
       ),
     );
