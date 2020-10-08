@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './ProductOverviewScreen.dart';
+import './App_drawer.dart';
 
 List product = [
   {
@@ -47,6 +48,15 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Esmart'),
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(right: 10),
+            child: Icon(Icons.shopping_cart),
+          )
+        ],
+      ),
+      drawer: Drawer(
+        child: Appdrawer(),
       ),
       body: GridView.builder(
         padding: EdgeInsets.only(top: 10),
