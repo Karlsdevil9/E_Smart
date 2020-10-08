@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './ProductOverviewScreen.dart';
 import './App_drawer.dart';
+import './Cart.dart';
 
 List product = [
   {
@@ -36,6 +37,7 @@ List product = [
     'Category': 'Men'
   }
 ];
+List cartItems = [];
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -51,7 +53,18 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 10),
-            child: Icon(Icons.shopping_cart),
+            child: IconButton(
+              icon: Icon(Icons.shopping_cart),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (BuildContext context) => Cart(
+                            cartItems: cartItems,
+                          )),
+                );
+              },
+            ),
           )
         ],
       ),
@@ -64,54 +77,57 @@ class _HomeScreenState extends State<HomeScreen> {
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2, crossAxisSpacing: 4.0, mainAxisSpacing: 8.0),
         itemBuilder: (context, index) {
-          return GestureDetector(
-            onTap: () {
-              Navigator.push(
-                  context,
-                  new MaterialPageRoute(
-                      builder: (BuildContext context) => ProductOverviewScreen(
-                            item: product[index],
-                          )));
-            },
-            child: Container(
-                height: 200,
-                child: Card(
-                    child: Stack(
-                  children: [
-                    Image.network(product[index]['Link']),
-                    Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Container(
-                        height: 45,
-                        width: MediaQuery.of(context).size.width,
-                        child: Card(
-                          color: Colors.transparent,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              IconButton(
-                                  icon: Icon(
-                                    Icons.favorite,
-                                    color: Colors.redAccent,
-                                  ),
-                                  onPressed: null),
-                              Text(
-                                product[index]['Title'],
-                                style: TextStyle(color: Colors.white),
+          return Container(
+            height: 200,
+            child: Card(
+                child: Stack(
+              children: [
+                GestureDetector(
+                    child: Image.network(product[index]['Link']),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          new MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  ProductOverviewScreen(
+                                    item: product[index],
+                                  )));
+                    }),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    height: 45,
+                    width: MediaQuery.of(context).size.width,
+                    child: Card(
+                      color: Colors.transparent,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          IconButton(
+                              icon: Icon(
+                                Icons.favorite,
+                                color: Colors.redAccent,
                               ),
-                              IconButton(
-                                  icon: Icon(
-                                    Icons.shopping_cart,
-                                    color: Colors.redAccent,
-                                  ),
-                                  onPressed: null)
-                            ],
+                              onPressed: null),
+                          Text(
+                            product[index]['Title'],
+                            style: TextStyle(color: Colors.white),
                           ),
-                        ),
+                          IconButton(
+                              icon: Icon(
+                                Icons.shopping_cart,
+                                color: Colors.redAccent,
+                              ),
+                              onPressed: () {
+                                cartItems.add(product[index]);
+                              })
+                        ],
                       ),
-                    )
-                  ],
-                ))),
+                    ),
+                  ),
+                )
+              ],
+            )),
           );
         },
       ),
