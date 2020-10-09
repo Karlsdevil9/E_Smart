@@ -10,7 +10,7 @@ List product = [
     'Description': 'This is a blue colour denim',
     'Link':
         'https://pngriver.com/wp-content/uploads/2017/11/jents-Dress-Shirts-free-PNG-transparent-background-images-free-download-clipart-pics-dress-shirt-png-image-914-799x1024.png',
-    'Price': '1000',
+    'Price': 1000,
     'Category': 'Men',
     'Quantity': 1
   },
@@ -20,7 +20,7 @@ List product = [
     'Description': 'This is a blue colour denim',
     'Link':
         'https://pngriver.com/wp-content/uploads/2017/11/jents-Dress-Shirts-free-PNG-transparent-background-images-free-download-clipart-pics-dress-shirt-png-image-914-799x1024.png',
-    'Price': '1000',
+    'Price': 1000,
     'Category': 'Men',
     'Quantity': 1
   },
@@ -30,7 +30,7 @@ List product = [
     'Description': 'This is a blue colour denim',
     'Link':
         'https://pngriver.com/wp-content/uploads/2017/11/jents-Dress-Shirts-free-PNG-transparent-background-images-free-download-clipart-pics-dress-shirt-png-image-914-799x1024.png',
-    'Price': '1000',
+    'Price': 1000,
     'Category': 'Men',
     'Quantity': 1
   },
@@ -40,7 +40,7 @@ List product = [
     'Description': 'This is a blue colour denim',
     'Link':
         'https://th.bing.com/th/id/OIP.CenRsuUA4_pO9KRFAcMb-QHaIO?pid=Api&w=497&h=552&rs=1',
-    'Price': '1000',
+    'Price': 1000,
     'Category': 'Men',
     'Quantity': 1
   }
