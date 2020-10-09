@@ -5,36 +5,44 @@ import './Cart.dart';
 
 List product = [
   {
+    'id': '1',
     'Title': 'Shirt',
     'Description': 'This is a blue colour denim',
     'Link':
         'https://pngriver.com/wp-content/uploads/2017/11/jents-Dress-Shirts-free-PNG-transparent-background-images-free-download-clipart-pics-dress-shirt-png-image-914-799x1024.png',
     'Price': '1000',
-    'Category': 'Men'
+    'Category': 'Men',
+    'Quantity': 1
   },
   {
+    'id': '2',
     'Title': 'Shirt',
     'Description': 'This is a blue colour denim',
     'Link':
         'https://pngriver.com/wp-content/uploads/2017/11/jents-Dress-Shirts-free-PNG-transparent-background-images-free-download-clipart-pics-dress-shirt-png-image-914-799x1024.png',
     'Price': '1000',
-    'Category': 'Men'
+    'Category': 'Men',
+    'Quantity': 1
   },
   {
+    'id': '3',
     'Title': 'Shirt',
     'Description': 'This is a blue colour denim',
     'Link':
         'https://pngriver.com/wp-content/uploads/2017/11/jents-Dress-Shirts-free-PNG-transparent-background-images-free-download-clipart-pics-dress-shirt-png-image-914-799x1024.png',
     'Price': '1000',
-    'Category': 'Men'
+    'Category': 'Men',
+    'Quantity': 1
   },
   {
+    'id': '4',
     'Title': 'Shirt',
     'Description': 'This is a blue colour denim',
     'Link':
         'https://th.bing.com/th/id/OIP.CenRsuUA4_pO9KRFAcMb-QHaIO?pid=Api&w=497&h=552&rs=1',
     'Price': '1000',
-    'Category': 'Men'
+    'Category': 'Men',
+    'Quantity': 1
   }
 ];
 List cartItems = [];
@@ -119,7 +127,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                 color: Colors.redAccent,
                               ),
                               onPressed: () {
-                                cartItems.add(product[index]);
+                                int id = cartItems.indexWhere((element) =>
+                                    element['id'] == product[index]['id']);
+                                if (id >= 0)
+                                  cartItems[id]['Quantity'] =
+                                      cartItems[id]['Quantity'] + 1;
+                                else
+                                  cartItems.add(product[index]);
                               })
                         ],
                       ),

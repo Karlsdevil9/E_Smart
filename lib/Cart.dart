@@ -32,6 +32,7 @@ class Cart extends StatelessWidget {
                   child: Image.network(cartItems[index]["Link"]),
                 ),
                 title: Text(cartItems[index]["Title"]),
+                subtitle: Text(cartItems[index]["Quantity"].toString()),
                 trailing: Text(cartItems[index]["Price"]),
               ),
             );
