@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './EditProfile.dart';
+import './MyAccount.dart';
 
 class Appdrawer extends StatelessWidget {
   @override
@@ -18,7 +18,7 @@ class Appdrawer extends StatelessWidget {
             Navigator.push(
                 context,
                 new MaterialPageRoute(
-                    builder: (BuildContext ctx) => EditProfile()));
+                    builder: (BuildContext ctx) => MyAccount()));
           },
           title: Text("Edit Profile"),
         ),

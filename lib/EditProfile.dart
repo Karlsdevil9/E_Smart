@@ -107,9 +107,15 @@ class EditProfile extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              RaisedButton(
-                onPressed: () {},
-                child: Text("Save Profile"),
+              Container(
+                height: 50,
+                width: MediaQuery.of(context).size.width,
+                child: Expanded(
+                  child: RaisedButton(
+                    onPressed: () {},
+                    child: Text("Save Profile"),
+                  ),
+                ),
               )
             ],
           ),
