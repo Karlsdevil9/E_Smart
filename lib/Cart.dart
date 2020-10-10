@@ -17,7 +17,7 @@ class _CartState extends State<Cart> {
     setState(() {
       widget.cartItems.clear();
     });
-    debugPrint(orders[0]['']);
+    debugPrint(orders[0]['title']);
   }
 
   @override

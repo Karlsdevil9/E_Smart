@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './EditProfile.dart';
 
 class Appdrawer extends StatelessWidget {
   @override
@@ -14,7 +15,10 @@ class Appdrawer extends StatelessWidget {
         ),
         ListTile(
           onTap: () {
-            Navigator.pop(context);
+            Navigator.push(
+                context,
+                new MaterialPageRoute(
+                    builder: (BuildContext ctx) => EditProfile()));
           },
           title: Text("Edit Profile"),
         ),
