@@ -12,7 +12,8 @@ List product = [
         'https://pngriver.com/wp-content/uploads/2017/11/jents-Dress-Shirts-free-PNG-transparent-background-images-free-download-clipart-pics-dress-shirt-png-image-914-799x1024.png',
     'Price': 1000,
     'Category': 'Men',
-    'Quantity': 1
+    'Quantity': 1,
+    'fav': false
   },
   {
     'id': '2',
@@ -22,7 +23,8 @@ List product = [
         'https://pngriver.com/wp-content/uploads/2017/11/jents-Dress-Shirts-free-PNG-transparent-background-images-free-download-clipart-pics-dress-shirt-png-image-914-799x1024.png',
     'Price': 1000,
     'Category': 'Men',
-    'Quantity': 1
+    'Quantity': 1,
+    'fav': false
   },
   {
     'id': '3',
@@ -32,7 +34,8 @@ List product = [
         'https://pngriver.com/wp-content/uploads/2017/11/jents-Dress-Shirts-free-PNG-transparent-background-images-free-download-clipart-pics-dress-shirt-png-image-914-799x1024.png',
     'Price': 1000,
     'Category': 'Men',
-    'Quantity': 1
+    'Quantity': 1,
+    'fav': false
   },
   {
     'id': '4',
@@ -42,12 +45,16 @@ List product = [
         'https://th.bing.com/th/id/OIP.CenRsuUA4_pO9KRFAcMb-QHaIO?pid=Api&w=497&h=552&rs=1',
     'Price': 1000,
     'Category': 'Men',
-    'Quantity': 1
+    'Quantity': 1,
+    'fav': false
   }
 ];
 List cartItems = [];
+List wishList = [];
+bool isWishList = false;
 
 class HomeScreen extends StatefulWidget {
+  HomeScreen({isWishList});
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -116,7 +123,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Icons.favorite,
                                 color: Colors.redAccent,
                               ),
-                              onPressed: null),
+                              onPressed: () {
+                                if (product[index]['fav'] >= false)
+                                  product[index]['fav'] = true;
+                                else
+                                  product[index]['fav'] = true;
+                              }),
                           Text(
                             product[index]['Title'],
                             style: TextStyle(color: Colors.white),

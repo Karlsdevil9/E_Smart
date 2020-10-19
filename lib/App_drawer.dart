@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import './MyAccount.dart';
 
 class Appdrawer extends StatelessWidget {
+  List wishList = [];
+  List cartList = [];
+  Appdrawer({wishList, cartList});
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -24,9 +27,9 @@ class Appdrawer extends StatelessWidget {
         ),
         ListTile(
           onTap: () {
-            Navigator.pop(context);
+            Navigator.push(context, new MaterialPageRoute());
           },
-          title: Text("Orders"),
+          title: Text("WishList"),
         ),
         ListTile(
           onTap: () {

@@ -2,8 +2,12 @@ import 'package:e_smart/HomeScreen.dart';
 import 'package:flutter/material.dart';
 import './Curvepainter.dart';
 import './SignupScreen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginScreen extends StatelessWidget {
+  final email = TextEditingController();
+  final password = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,20 +33,37 @@ class LoginScreen extends StatelessWidget {
                 height: 60,
               ),
               TextField(
+                controller: email,
                 decoration: InputDecoration(labelText: 'Email'),
               ),
               TextField(
+                controller: password,
                 decoration: InputDecoration(labelText: 'Password'),
               ),
               SizedBox(
                 height: 20,
               ),
               RaisedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      new MaterialPageRoute(
-                          builder: (BuildContext context) => new HomeScreen()));
+                onPressed: () async {
+                  try {
+                    UserCredential userCredential = await FirebaseAuth.instance
+                        .signInWithEmailAndPassword(
+                            email: email.toString(),
+                            password: password.toString());
+                    if (userCredential.credential != null) {
+                      Navigator.push(
+                          context,
+                          new MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  new HomeScreen()));
+                    }
+                  } on FirebaseAuthException catch (e) {
+                    if (e.code == 'user-not-found') {
+                      print('No user found for that email.');
+                    } else if (e.code == 'wrong-password') {
+                      print('Wrong password provided for that user.');
+                    }
+                  }
                 },
                 child: Text("Login"),
               ),
