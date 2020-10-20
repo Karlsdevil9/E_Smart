@@ -48,9 +48,9 @@ class LoginScreen extends StatelessWidget {
                   try {
                     UserCredential userCredential = await FirebaseAuth.instance
                         .signInWithEmailAndPassword(
-                            email: email.toString(),
-                            password: password.toString());
-                    if (userCredential.credential != null) {
+                            email: email.text, password: password.text);
+                    if (userCredential.user.uid ==
+                        FirebaseAuth.instance.currentUser.uid) {
                       Navigator.push(
                           context,
                           new MaterialPageRoute(

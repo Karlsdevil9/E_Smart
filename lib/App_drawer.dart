@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import './MyAccount.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import './LoginScreen.dart';
 
 class Appdrawer extends StatelessWidget {
   List wishList = [];
@@ -33,7 +35,8 @@ class Appdrawer extends StatelessWidget {
         ),
         ListTile(
           onTap: () {
-            Navigator.pop(context);
+            FirebaseAuth.instance.signOut().then(
+                (value) => Navigator.pushReplacementNamed(context, '/login'));
           },
           title: Text("Log Out"),
         )

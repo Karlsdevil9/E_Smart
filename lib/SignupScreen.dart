@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './Curvepainter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class SignupScreen extends StatelessWidget {
   final email = TextEditingController();
@@ -47,10 +48,10 @@ class SignupScreen extends StatelessWidget {
                 height: 20,
               ),
               RaisedButton(
-                onPressed: () async {
+                onPressed: () {
                   try {
                     FirebaseAuth.instance.createUserWithEmailAndPassword(
-                        email: email.toString(), password: password.toString());
+                        email: email.text, password: password.text);
                   } on FirebaseAuthException catch (e) {
                     if (e.code == 'weak-password') {
                       print('The password provided is too weak.');
