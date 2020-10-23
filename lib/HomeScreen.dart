@@ -2,53 +2,9 @@ import 'package:flutter/material.dart';
 import './ProductOverviewScreen.dart';
 import './App_drawer.dart';
 import './Cart.dart';
+import './Providers/Products_providers.dart';
+import 'package:provider/provider.dart';
 
-List product = [
-  {
-    'id': '1',
-    'Title': 'Shirt',
-    'Description': 'This is a blue colour denim',
-    'Link':
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSwFFvqCJ2HpCyg-hLbRXv7eUH67Z7YT4Q79Q&usqp=CAU',
-    'Price': 1000,
-    'Category': 'Men',
-    'Quantity': 1,
-    'fav': false
-  },
-  {
-    'id': '2',
-    'Title': 'Shirt',
-    'Description': 'This is a blue colour denim',
-    'Link':
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSwFFvqCJ2HpCyg-hLbRXv7eUH67Z7YT4Q79Q&usqp=CAU',
-    'Price': 1000,
-    'Category': 'Men',
-    'Quantity': 1,
-    'fav': false
-  },
-  {
-    'id': '3',
-    'Title': 'Shirt',
-    'Description': 'This is a blue colour denim',
-    'Link':
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSwFFvqCJ2HpCyg-hLbRXv7eUH67Z7YT4Q79Q&usqp=CAU',
-    'Price': 1000,
-    'Category': 'Men',
-    'Quantity': 1,
-    'fav': false
-  },
-  {
-    'id': '4',
-    'Title': 'Shirt',
-    'Description': 'This is a blue colour denim',
-    'Link':
-        'https://th.bing.com/th/id/OIP.CenRsuUA4_pO9KRFAcMb-QHaIO?pid=Api&w=497&h=552&rs=1',
-    'Price': 1000,
-    'Category': 'Men',
-    'Quantity': 1,
-    'fav': false
-  }
-];
 List cartItems = [];
 List wishList = [];
 bool isWishList = false;
@@ -62,6 +18,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final productsData = Provider.of<ProductsProvider>(context);
+    final product = productsData.items;
     return Scaffold(
       appBar: AppBar(
         title: Text('Esmart'),

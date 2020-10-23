@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import './LoginScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
+import './Providers/Products_providers.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,12 +13,15 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Esmart',
-      home: LoginScreen(),
-      routes: {
-        '/login': (context) => LoginScreen(),
-      },
+    return ChangeNotifierProvider(
+      create: (ctx) => ProductsProvider(),
+      child: MaterialApp(
+        title: 'Esmart',
+        home: LoginScreen(),
+        routes: {
+          '/login': (context) => LoginScreen(),
+        },
+      ),
     );
   }
 }
