@@ -58,13 +58,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 GestureDetector(
                     child: Image.network(product[index]['Link']),
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          new MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  ProductOverviewScreen(
-                                    item: product[index],
-                                  )));
+                      Navigator.pushNamed(context, '/productOverviewScreen',
+                          arguments: product[index]['id']);
                     }),
                 Align(
                   alignment: Alignment.bottomCenter,

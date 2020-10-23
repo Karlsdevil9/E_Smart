@@ -3,6 +3,7 @@ import './LoginScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import './Providers/Products_providers.dart';
+import './ProductOverviewScreen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
         home: LoginScreen(),
         routes: {
           '/login': (context) => LoginScreen(),
+          ProductOverviewScreen.routeName: (context) => ProductOverviewScreen(),
         },
       ),
     );

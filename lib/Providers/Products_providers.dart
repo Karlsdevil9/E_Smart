@@ -51,6 +51,10 @@ class ProductsProvider with ChangeNotifier {
     return [..._items];
   }
 
+  int findById(String id) {
+    return _items.indexWhere((element) => element['id'] == id);
+  }
+
   void addItem() {
     notifyListeners();
   }
