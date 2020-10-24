@@ -58,4 +58,9 @@ class ProductsProvider with ChangeNotifier {
   void addItem() {
     notifyListeners();
   }
+
+  void toggleFav(int index) {
+    _items[index]['fav'] = !_items[index]['fav'];
+    notifyListeners();
+  }
 }

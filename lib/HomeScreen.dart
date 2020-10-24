@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import './ProductOverviewScreen.dart';
 import './App_drawer.dart';
 import './Cart.dart';
 import './Providers/Products_providers.dart';
@@ -73,14 +72,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           IconButton(
                               icon: Icon(
-                                Icons.favorite,
+                                product[index]['fav']
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
                                 color: Colors.redAccent,
                               ),
                               onPressed: () {
-                                if (product[index]['fav'] >= false)
-                                  product[index]['fav'] = true;
-                                else
-                                  product[index]['fav'] = true;
+                                productsData.toggleFav(index);
                               }),
                           Text(
                             product[index]['Title'],
