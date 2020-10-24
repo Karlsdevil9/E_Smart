@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import './MyAccount.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import './LoginScreen.dart';
+import './MyAccount.dart';
 
 class Appdrawer extends StatelessWidget {
   List wishList = [];
@@ -20,18 +19,24 @@ class Appdrawer extends StatelessWidget {
         ),
         ListTile(
           onTap: () {
+            Navigator.pushNamed(context, '/HomeScreen', arguments: false);
+          },
+          title: Text("Home"),
+        ),
+        ListTile(
+          onTap: () {
+            Navigator.pushNamed(context, '/HomeScreen', arguments: true);
+          },
+          title: Text("WishList"),
+        ),
+        ListTile(
+          onTap: () {
             Navigator.push(
                 context,
                 new MaterialPageRoute(
                     builder: (BuildContext ctx) => MyAccount()));
           },
           title: Text("Edit Profile"),
-        ),
-        ListTile(
-          onTap: () {
-            Navigator.push(context, new MaterialPageRoute());
-          },
-          title: Text("WishList"),
         ),
         ListTile(
           onTap: () {

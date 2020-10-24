@@ -47,8 +47,13 @@ class ProductsProvider with ChangeNotifier {
       'fav': false
     }
   ];
+
   List get items {
     return [..._items];
+  }
+
+  List get favItems {
+    return _items.where((element) => element['fav']).toList();
   }
 
   int findById(String id) {

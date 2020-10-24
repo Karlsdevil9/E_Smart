@@ -51,11 +51,8 @@ class LoginScreen extends StatelessWidget {
                             email: email.text, password: password.text);
                     if (userCredential.user.uid ==
                         FirebaseAuth.instance.currentUser.uid) {
-                      Navigator.push(
-                          context,
-                          new MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  new HomeScreen()));
+                      Navigator.pushNamed(context, '/HomeScreen',
+                          arguments: false);
                     }
                   } on FirebaseAuthException catch (e) {
                     if (e.code == 'user-not-found') {

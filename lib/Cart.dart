@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import './Providers/Cart_provider.dart';
 
 class Cart extends StatefulWidget {
+  final cart = Provider.of<CartProvider>(context, listen: false);
+
   List cartItems = [];
 
   Cart({this.cartItems});

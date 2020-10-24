@@ -2,23 +2,23 @@ import 'package:flutter/material.dart';
 import './App_drawer.dart';
 import './Cart.dart';
 import './Providers/Products_providers.dart';
+import './Providers/Cart_provider.dart';
 import 'package:provider/provider.dart';
 
 List cartItems = [];
 List wishList = [];
 bool isWishList = false;
 
-class HomeScreen extends StatefulWidget {
-  HomeScreen({isWishList});
-  @override
-  _HomeScreenState createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
+class HomeScreen extends StatelessWidget {
+  static const routeName = '/HomeScreen';
   @override
   Widget build(BuildContext context) {
+    bool showfav = false;
+    showfav = ModalRoute.of(context).settings.arguments as bool;
     final productsData = Provider.of<ProductsProvider>(context);
-    final product = productsData.items;
+    final cart = Provider.of<CartProvider>(context, listen: false);
+
+    final product = showfav ? productsData.favItems : productsData.items;
     return Scaffold(
       appBar: AppBar(
         title: Text('Esmart'),
@@ -90,13 +90,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                 color: Colors.redAccent,
                               ),
                               onPressed: () {
-                                int id = cartItems.indexWhere((element) =>
-                                    element['id'] == product[index]['id']);
-                                if (id >= 0)
-                                  cartItems[id]['Quantity'] =
-                                      cartItems[id]['Quantity'] + 1;
-                                else
-                                  cartItems.add(product[index]);
+                                cart.addItem(
+                                    product[index]['id'],
+                                    product[index]['price'],
+                                    product[index]['Title']);
                               })
                         ],
                       ),
