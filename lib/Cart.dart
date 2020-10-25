@@ -12,7 +12,7 @@ class Cart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cart = Provider.of<CartProvider>(context, listen: false);
+    final cart = Provider.of<CartProvider>(context);
 
     return Scaffold(
         appBar: AppBar(
@@ -35,18 +35,54 @@ class Cart extends StatelessWidget {
         body: ListView.builder(
           itemCount: cart.itemCount,
           itemBuilder: (context, index) {
-            return Card(
-              child: ListTile(
-                leading: Container(
-                  height: MediaQuery.of(context).size.height,
-                  width: 100,
-                  child: Image.network(cart.items.values.toList()[index].img),
+            return Dismissible(
+              key: ValueKey(cart.items.keys.toList()[index]),
+              background: Container(
+                color: Colors.red,
+                child: Icon(
+                  Icons.delete,
+                  color: Colors.white,
+                  size: 40,
                 ),
-                title: Text(cart.items.values.toList()[index].title),
-                subtitle: Text(
-                    "Quantity : ${cart.items.values.toList()[index].quantity.toString()}"),
-                trailing:
-                    Text((cart.items.values.toList()[index].price).toString()),
+                alignment: Alignment.centerRight,
+                padding: EdgeInsets.only(right: 20),
+                margin: EdgeInsets.symmetric(
+                  horizontal: 15,
+                  vertical: 4,
+                ),
+              ),
+              direction: DismissDirection.endToStart,
+              onDismissed: (direction) {
+                cart.removeItem(cart.items.keys.toList()[index]);
+              },
+              child: Card(
+                child: ListTile(
+                  leading: Container(
+                    height: MediaQuery.of(context).size.height,
+                    width: 100,
+                    child: Image.network(cart.items.values.toList()[index].img),
+                  ),
+                  title: Text(cart.items.values.toList()[index].title),
+                  subtitle: Text(
+                      "Quantity : ${cart.items.values.toList()[index].quantity.toString()}"),
+                  trailing: SizedBox(
+                    width: 100,
+                    child: Row(
+                      children: [
+                        Text((cart.items.values.toList()[index].price)
+                            .toString()),
+                        IconButton(
+                          icon: Icon(
+                            Icons.delete,
+                            color: Colors.red,
+                          ),
+                          onPressed: () =>
+                              cart.removeItem(cart.items.keys.toList()[index]),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
               ),
             );
           },
