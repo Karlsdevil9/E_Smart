@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import './Providers/Cart_provider.dart';
+import './Providers/Orders.dart';
 
 class Cart extends StatelessWidget {
   static const routeName = '/Cart';
   List orders = [];
-
-  void placeOrder() {
-    debugPrint(orders[0]['title']);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +23,9 @@ class Cart extends StatelessWidget {
               RaisedButton(
                 child: Text("Place Order"),
                 onPressed: () {
-                  placeOrder();
+                  Provider.of<Orders>(context, listen: false)
+                      .addOrder(cart.items.values.toList(), cart.totalAmount);
+                  cart.clear();
                 },
               )
             ],

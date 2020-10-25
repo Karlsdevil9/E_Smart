@@ -7,6 +7,8 @@ import './ProductOverviewScreen.dart';
 import './HomeScreen.dart';
 import './Providers/Cart_provider.dart';
 import './Cart.dart';
+import './Providers/Orders.dart';
+import './OrdersScreen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,6 +27,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (ctx) => CartProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (ctx) => Orders(),
+        ),
       ],
       child: MaterialApp(
         title: 'Esmart',
@@ -34,6 +39,7 @@ class MyApp extends StatelessWidget {
           ProductOverviewScreen.routeName: (context) => ProductOverviewScreen(),
           HomeScreen.routeName: (context) => HomeScreen(),
           Cart.routeName: (context) => Cart(),
+          OrdersScreen.routeName: (context) => OrdersScreen()
         },
       ),
     );

@@ -31,6 +31,12 @@ class Appdrawer extends StatelessWidget {
         ),
         ListTile(
           onTap: () {
+            Navigator.pushNamed(context, '/OrderScreen');
+          },
+          title: Text("Order"),
+        ),
+        ListTile(
+          onTap: () {
             Navigator.push(
                 context,
                 new MaterialPageRoute(
