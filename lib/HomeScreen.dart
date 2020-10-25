@@ -28,13 +28,7 @@ class HomeScreen extends StatelessWidget {
             child: IconButton(
               icon: Icon(Icons.shopping_cart),
               onPressed: () {
-                Navigator.push(
-                  context,
-                  new MaterialPageRoute(
-                      builder: (BuildContext context) => Cart(
-                            cartItems: cartItems,
-                          )),
-                );
+                Navigator.pushNamed(context, '/Cart');
               },
             ),
           )
@@ -92,8 +86,9 @@ class HomeScreen extends StatelessWidget {
                               onPressed: () {
                                 cart.addItem(
                                     product[index]['id'],
-                                    product[index]['price'],
-                                    product[index]['Title']);
+                                    product[index]['Price'],
+                                    product[index]['Title'],
+                                    product[index]['Link']);
                               })
                         ],
                       ),

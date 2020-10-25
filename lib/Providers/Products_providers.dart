@@ -8,7 +8,7 @@ class ProductsProvider with ChangeNotifier {
       'Description': 'This is a blue colour denim',
       'Link':
           'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSwFFvqCJ2HpCyg-hLbRXv7eUH67Z7YT4Q79Q&usqp=CAU',
-      'Price': 1000,
+      'Price': 1000.0,
       'Category': 'Men',
       'Quantity': 1,
       'fav': false
@@ -19,7 +19,7 @@ class ProductsProvider with ChangeNotifier {
       'Description': 'This is a blue colour denim',
       'Link':
           'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSwFFvqCJ2HpCyg-hLbRXv7eUH67Z7YT4Q79Q&usqp=CAU',
-      'Price': 1000,
+      'Price': 1000.0,
       'Category': 'Men',
       'Quantity': 1,
       'fav': false
@@ -30,7 +30,7 @@ class ProductsProvider with ChangeNotifier {
       'Description': 'This is a blue colour denim',
       'Link':
           'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSwFFvqCJ2HpCyg-hLbRXv7eUH67Z7YT4Q79Q&usqp=CAU',
-      'Price': 1000,
+      'Price': 1000.0,
       'Category': 'Men',
       'Quantity': 1,
       'fav': false
@@ -41,7 +41,7 @@ class ProductsProvider with ChangeNotifier {
       'Description': 'This is a blue colour denim',
       'Link':
           'https://th.bing.com/th/id/OIP.CenRsuUA4_pO9KRFAcMb-QHaIO?pid=Api&w=497&h=552&rs=1',
-      'Price': 1000,
+      'Price': 1000.0,
       'Category': 'Men',
       'Quantity': 1,
       'fav': false
