@@ -10,6 +10,31 @@ class Cart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
+    Future<bool> show() {
+      return showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          title: Text('Are you sure?'),
+          content: Text(
+            'Do you want to remove the item from the cart?',
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('No'),
+              onPressed: () {
+                Navigator.of(ctx).pop(false);
+              },
+            ),
+            FlatButton(
+              child: Text('Yes'),
+              onPressed: () {
+                Navigator.of(ctx).pop(true);
+              },
+            ),
+          ],
+        ),
+      );
+    }
 
     return Scaffold(
         appBar: AppBar(
@@ -51,6 +76,9 @@ class Cart extends StatelessWidget {
                 ),
               ),
               direction: DismissDirection.endToStart,
+              confirmDismiss: (direction) {
+                return show();
+              },
               onDismissed: (direction) {
                 cart.removeItem(cart.items.keys.toList()[index]);
               },
@@ -71,13 +99,17 @@ class Cart extends StatelessWidget {
                         Text((cart.items.values.toList()[index].price)
                             .toString()),
                         IconButton(
-                          icon: Icon(
-                            Icons.delete,
-                            color: Colors.red,
-                          ),
-                          onPressed: () =>
-                              cart.removeItem(cart.items.keys.toList()[index]),
-                        )
+                            icon: Icon(
+                              Icons.delete,
+                              color: Colors.red,
+                            ),
+                            onPressed: () async {
+                              bool sho = await show();
+                              if (sho) {
+                                cart.removeItem(
+                                    cart.items.keys.toList()[index]);
+                              }
+                            })
                       ],
                     ),
                   ),

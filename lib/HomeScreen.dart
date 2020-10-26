@@ -89,6 +89,17 @@ class HomeScreen extends StatelessWidget {
                                     product[index]['Price'],
                                     product[index]['Title'],
                                     product[index]['Link']);
+                                Scaffold.of(context).hideCurrentSnackBar();
+                                Scaffold.of(context).showSnackBar(SnackBar(
+                                  content: Text("Item added to cart!"),
+                                  duration: Duration(seconds: 2),
+                                  action: SnackBarAction(
+                                      label: "Undo",
+                                      onPressed: () {
+                                        cart.removeSingleItem(
+                                            product[index]['id']);
+                                      }),
+                                ));
                               })
                         ],
                       ),
